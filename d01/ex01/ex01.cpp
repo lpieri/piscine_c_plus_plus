@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:54:33 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/14 15:55:51 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/14 15:56:20 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void memoryLeak()
 
 int		main(void) {
 	memoryLeak();
-	while (1);
+	while (1);g
 	return (0);
 }
