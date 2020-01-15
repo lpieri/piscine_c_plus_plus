@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:40:17 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/14 20:33:35 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/15 14:52:40 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Zombie::Zombie() : _type("normal") {
 }
 
 Zombie::~Zombie(void) {
-	std::cout << "The zombie (" << this->_type << ") with name " << this->_name << " are dead" << std::endl;
+	std::cout << "The zombie (" << this->_type << ") with name " << this->_name << " is dead" << std::endl;
 }
 
 void	Zombie::announce(void) const {
