@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:30:40 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/14 15:43:53 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/15 14:57:46 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ Pony::Pony(std::string name_of_pony, std::string type) : _name(name_of_pony), _t
 }
 
 Pony::~Pony(void) {
-	std::cout << "Oh no it's so sad the pony " << this->_name << " it's dead" << std::endl;
+	std::cout << "Oh no it's so sad the pony " << this->_name << " is dead" << std::endl;
 }
 
 void	Pony::do_magic(void) const {
 	if (this->_type == "Licorne") {
 		std::cout << "The licorne " << this->_name << " print a beautiful rainbow" << std::endl;
 	} else {
-		std::cout << this->_name << " it's just a single pony doesn't magic :(!!" << std::endl;
+		std::cout << this->_name << " is just a single pony doesn't magic :(!!" << std::endl;
 	}
 }
