@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:57:36 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/15 14:26:09 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/15 14:47:31 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ std::string		find_and_replace(std::string str, std::string s1, std::string s2) {
 
 	while ((find = str.find(s1, pos)) <= str.length()) {
 		str.replace(find, s1.length(), s2);
-		pos = find;
+		pos = find + s2.length();
 	}
 	return (str);
 }
