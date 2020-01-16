@@ -6,33 +6,21 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 13:37:54 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/16 15:38:30 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/16 16:59:30 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : _name("ClapTrap"),
-_hit_points(100),
-_max_hit_points(100),
-_energy_points(100),
-_max_energy_points(100),
-_level(1),
-_melee_attack_damage(30),
-_ranged_attack_damage(20),
-_armor_damage_reduction(5) {
+FragTrap::FragTrap(void) : _name("ClapTrap"), _hit_points(100),
+_max_hit_points(100), _energy_points(100), _max_energy_points(100), _level(1),
+_melee_attack_damage(30), _ranged_attack_damage(20), _armor_damage_reduction(5) {
 	std::cout << "I'm the butt of a pandocorn." << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : _name(name),
-_hit_points(100),
-_max_hit_points(100),
-_energy_points(100),
-_max_energy_points(100),
-_level(1),
-_melee_attack_damage(30),
-_ranged_attack_damage(20),
-_armor_damage_reduction(5) {
+FragTrap::FragTrap(std::string name) : _name(name), _hit_points(100),
+_max_hit_points(100), _energy_points(100), _max_energy_points(100), _level(1),
+_melee_attack_damage(30), _ranged_attack_damage(20), _armor_damage_reduction(5) {
 	std::cout << "<" << name << "> I'm the butt of a pandocorn." << std::endl;
 }
 
@@ -62,5 +50,8 @@ void			FragTrap::takeDamage(unsigned int amount) {
 }
 
 void			FragTrap::beRepaired(unsigned int amount) {
+	if (this->_hit_points + amount >= this->_max_hit_points && amount <= 0)
+		return ;
+	this->_hit_points += amount;
 	std::cout << "FR4G-TP <" << this->_name << "> repairs himself by " << amount << " points !" << std::endl;
 }
