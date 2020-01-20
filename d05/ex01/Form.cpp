@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:54:18 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 14:06:06 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/20 17:38:48 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ _grade_to_sign(gradeToSign), _grade_to_execute(gradeToExe), _is_signed(false) {
 }
 
 const char *	Form::GradeTooHighException::what() const throw() {
-	return ("The grade is too high (grade < 1)");
+	return ("The grade of Bureaucrat or set value is too high (grade < 1)");
 }
 
 const char *	Form::GradeTooLowException::what() const throw() {
-	return ("The grade is too low (grade > 150)");
+	return ("The grade of Bureaucrat or set value is too low (grade > 150)");
 }
 
 std::string		Form::getName(void) const {
@@ -56,11 +56,11 @@ bool			Form::getIsSigned(void) const {
 
 void			Form::beSigned(Bureaucrat const & bureaucrat) {
 	if (bureaucrat.getGrade() > this->_grade_to_sign) {
-		// bureaucrat.signForm(*this);
+		bureaucrat.signForm(this->_is_signed, this->_name, this->_grade_to_sign);
 		throw Form::GradeTooLowException();
 	}
 	this->_is_signed = true;
-	// bureaucrat.signForm(*this);
+	bureaucrat.signForm(this->_is_signed, this->_name, this->_grade_to_sign);
 }
 
 Form &			Form::operator=(Form const & rhs) {

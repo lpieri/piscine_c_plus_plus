@@ -6,16 +6,14 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:41:23 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 14:10:54 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/20 17:33:51 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# ifndef BUREAUCRAT_HPP
 # include "Bureaucrat.hpp"
-# endif
 
 # ifndef MAX_HIGH_GRADE
 # define MAX_HIGH_GRADE		1

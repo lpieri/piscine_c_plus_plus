@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:07:13 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 14:10:32 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/20 17:37:15 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <iostream>
 # include <stdexcept>
-
-# ifndef FORM_HPP
-# include "Form.hpp"
-# endif
 
 # ifndef MAX_HIGH_GRADE
 # define MAX_HIGH_GRADE		1
@@ -56,7 +52,7 @@ public:
 
 	void				addGrade(void);
 	void				removeGrade(void);
-	// void				signForm(Form const & form) const;
+	void				signForm(bool isSigned, std::string formName, uint gradeToSigned) const;
 
 	Bureaucrat&			operator=(Bureaucrat const & rhs);
 };

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:18:17 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 14:05:54 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/20 17:32:55 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ void			Bureaucrat::removeGrade(void) {
 	++this->_grade;
 }
 
-// void			Bureaucrat::signForm(Form const & form) const {
-// 	if (form.getIsSigned()) {
-// 		std::cout << this->_name << " signs " << form.getName() << std::endl;
-// 	} else {
-// 		std::cout << this->_name << " cannot sign " << form.getName() << " he grade ";
-// 		std::cout << this->_grade << " is too low than form grade " << form.getGradeToSign() << std::endl;
-// 	}
-// }
+void			Bureaucrat::signForm(bool isSigned, std::string formName, uint gradeToSigned) const {
+	if (isSigned) {
+		std::cout << this->_name << " signs " << formName << std::endl;
+	} else {
+		std::cout << this->_name << " cannot sign " << formName << " he grade ";
+		std::cout << this->_grade << " is too low than form grade " << gradeToSigned << std::endl;
+	}
+}
 
 Bureaucrat &	Bureaucrat::operator=(Bureaucrat const & rhs) {
 	this->_grade = rhs.getGrade();
