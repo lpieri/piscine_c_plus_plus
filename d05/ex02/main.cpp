@@ -6,12 +6,14 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:49:06 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 10:06:39 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 10:32:26 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int		main(void) {
 	{
@@ -89,29 +91,29 @@ int		main(void) {
 	}
 	{
 		std::cout << "[Form main test]:" << std::endl;
-		// {
-		// 	Form*		f1;
-		// 	Bureaucrat*	b1;
-		// 	std::cout << "-- try/catch number 1 --" << std::endl;
-		// 	try {
-		// 		std::cout << "Create f1 with grade 2 & b1 with grade 42..." << std::endl;
-		// 		f1 = new Form("f1", 2, 2);
-		// 		b1 = new Bureaucrat("b1", 42);
-		// 		std::cout << *f1 << std::endl;
-		// 		std::cout << *b1 << std::endl;
-		// 		std::cout << "try f1 be signed by b1" << std::endl;
-		// 		f1->beSigned(*b1);
-		// 		std::cout << *f1 << std::endl;
-		// 		delete f1;
-		// 		delete b1;
-		// 	}
-		// 	catch (std::exception & e) {
-		// 		delete f1;
-		// 		delete b1;
-		// 		std::cout << e.what() << std::endl;
-		// 	}
-		// 	std::cout << std::endl;
-		// }
+		{
+			ShrubberyCreationForm*	f1;
+			Bureaucrat*	b1;
+			std::cout << "-- try/catch number 1 --" << std::endl;
+			try {
+				std::cout << "Create f1 with grade 2 & b1 with grade 42..." << std::endl;
+				f1 = new ShrubberyCreationForm("sh1");
+				b1 = new Bureaucrat("b1", 42);
+				std::cout << *f1 << std::endl;
+				std::cout << *b1 << std::endl;
+				std::cout << "try f1 execute by b1" << std::endl;
+				f1->execute(*b1);
+				std::cout << *f1 << std::endl;
+				delete f1;
+				delete b1;
+			}
+			catch (std::exception & e) {
+				delete f1;
+				delete b1;
+				std::cout << e.what() << std::endl;
+			}
+			std::cout << std::endl;
+		}
 		// {
 		// 	Form*		f2;
 		// 	std::cout << "-- try/catch number 2 --" << std::endl;

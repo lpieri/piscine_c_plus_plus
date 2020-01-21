@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:41:23 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 10:01:39 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 10:34:39 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ private:
 
 public:
 	AForm(std::string name, uint gradeToSign, uint gradeToExe, std::string target);
-	~AForm(void);
+	virtual ~AForm(void);
+
+	class				GradeTooHighException : public std::exception {
+		public:
+			virtual const char *	what() const throw();
+	};
 
 	class				GradeTooHighException : public std::exception {
 		public:

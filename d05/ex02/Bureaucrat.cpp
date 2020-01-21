@@ -6,11 +6,12 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:18:17 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 10:06:00 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 10:17:43 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("default"), _grade(MAX_LOW_GRADE) {}
 

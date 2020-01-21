@@ -6,24 +6,24 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:54:18 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 09:47:46 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 10:34:19 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 AForm::AForm(void) :
-_name("default"), _grade_to_sign(MAX_LOW_GRADE),
-_grade_to_execute(MAX_LOW_GRADE), _is_signed(false), _target("default") {}
+_name("default"), _target("default"), _grade_to_sign(MAX_LOW_GRADE),
+_grade_to_execute(MAX_LOW_GRADE), _is_signed(false) {}
 
 AForm::AForm(AForm const & src) :
-_name(src.getName()), _grade_to_sign(src.getGradeToSign()),
-_grade_to_execute(src.getGradeToExe()), _is_signed(getIsSigned()), _target(src.getTarget()) {}
+_name(src.getName()), _target(src.getTarget()), _grade_to_sign(src.getGradeToSign()),
+_grade_to_execute(src.getGradeToExe()), _is_signed(getIsSigned()) {}
 
 AForm::~AForm(void) {}
 
-AForm::AForm(std::string name, uint gradeToSign, uint gradeToExe, std::string target) : _name(name),
-_grade_to_sign(gradeToSign), _grade_to_execute(gradeToExe), _is_signed(false), _target(target) {
+AForm::AForm(std::string name, uint gradeToSign, uint gradeToExe, std::string target) : _name(name), _target(target),
+_grade_to_sign(gradeToSign), _grade_to_execute(gradeToExe), _is_signed(false) {
 	if (this->_grade_to_execute > MAX_LOW_GRADE || this->_grade_to_sign > MAX_LOW_GRADE)
 		throw AForm::GradeTooLowException();
 	else if (this->_grade_to_execute < MAX_HIGH_GRADE || this->_grade_to_sign < MAX_HIGH_GRADE)
@@ -74,6 +74,7 @@ void			AForm::execute(Bureaucrat const & executor) const {
 	if (executor.getGrade() > this->_grade_to_execute) {
 		throw AForm::GradeTooLowException();
 	}
+	executor.executeForm(*this);
 	this->_action();
 }
 
