@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:18:17 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 10:17:43 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 13:44:12 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ void			Bureaucrat::removeGrade(void) {
 	++this->_grade;
 }
 
-void			Bureaucrat::signForm(bool isSigned, std::string formName, uint gradeToSigned) const {
-	if (isSigned) {
-		std::cout << this->_name << " signs " << formName << std::endl;
+void			Bureaucrat::signForm(AForm const & form) const {
+	if (form.getIsSigned()) {
+		std::cout << this->_name << " signs " << form.getName() << std::endl;
 	} else {
-		std::cout << this->_name << " cannot sign " << formName << " he grade ";
-		std::cout << this->_grade << " is too low than form grade " << gradeToSigned << std::endl;
+		std::cout << this->_name << " cannot sign " << form.getName() << " he grade ";
+		std::cout << this->_grade << " is too low than form grade " << form.getGradeToSign() << std::endl;
 	}
 }
 
-void			Bureaucrat::executeForm(AForm const & form) {
+void			Bureaucrat::executeForm(AForm const & form) const {
 	if (form.getGradeToExe() < this->_grade) {
 		std::cout << this->_name << " cannot execute " << form.getName();
 		std::cout << " he grade " << this->_grade;
-		std::cout << " is too low than form grade " << form.getGradeToSign() << std::endl;
+		std::cout << " is too low than form grade " << form.getGradeToExe() << std::endl;
 	} else {
 		std::cout << this->_name << " execute " << form.getName() << std::endl;
 	}

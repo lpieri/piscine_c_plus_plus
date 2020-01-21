@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:54:18 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 10:34:19 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 13:43:42 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ _grade_to_sign(gradeToSign), _grade_to_execute(gradeToExe), _is_signed(false) {
 		throw AForm::GradeTooLowException();
 	else if (this->_grade_to_execute < MAX_HIGH_GRADE || this->_grade_to_sign < MAX_HIGH_GRADE)
 		throw AForm::GradeTooHighException();
+}
+
+const char *	AForm::FormIsNotSignedExeption::what() const throw() {
+	return ("The Form is not signed cannot execute it");
 }
 
 const char *	AForm::GradeTooHighException::what() const throw() {
@@ -60,18 +64,19 @@ bool			AForm::getIsSigned(void) const {
 
 void			AForm::beSigned(Bureaucrat const & bureaucrat) {
 	if (bureaucrat.getGrade() > this->_grade_to_sign) {
-		bureaucrat.signForm(this->_is_signed, this->_name, this->_grade_to_sign);
+		bureaucrat.signForm(*this);
 		throw AForm::GradeTooLowException();
 	}
 	this->_is_signed = true;
-	bureaucrat.signForm(this->_is_signed, this->_name, this->_grade_to_sign);
+	bureaucrat.signForm(*this);
 }
 
 void			AForm::execute(Bureaucrat const & executor) const {
 	if (this->_is_signed == false) {
-
+		throw AForm::FormIsNotSignedExeption();
 	}
 	if (executor.getGrade() > this->_grade_to_execute) {
+		executor.executeForm(*this);
 		throw AForm::GradeTooLowException();
 	}
 	executor.executeForm(*this);

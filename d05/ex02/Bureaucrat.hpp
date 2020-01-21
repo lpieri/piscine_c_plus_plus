@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:07:13 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 10:18:02 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 13:39:00 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ public:
 
 	void				addGrade(void);
 	void				removeGrade(void);
-	void				signForm(bool isSigned, std::string formName, uint gradeToSigned) const;
-	void				executeForm(AForm const & form);
+	void				signForm(AForm const & form) const;
+	void				executeForm(AForm const & form) const;
 
 	Bureaucrat&			operator=(Bureaucrat const & rhs);
 };

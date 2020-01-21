@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 09:21:04 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 09:37:59 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 13:50:07 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : AForm("Ro
 RobotomyRequestForm::~RobotomyRequestForm(void) {}
 
 void				RobotomyRequestForm::_action(void) const {
-	std::cout << "<Drilling noise...> " << this->getTarget() << " has been robotomized successfully 50%% of the time" << std::endl;
+	std::cout << "<Drilling noise...> " << this->getTarget() << " has been robotomized successfully 50% of the time" << std::endl;
 }
