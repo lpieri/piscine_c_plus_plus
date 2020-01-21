@@ -6,11 +6,12 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:49:06 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 13:51:19 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 15:18:25 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -219,6 +220,78 @@ int		main(void) {
 			catch (std::exception & e) {
 				delete f5;
 				delete b5;
+				std::cout << e.what() << std::endl;
+			}
+		}
+		std::cout << std::endl;
+	}
+	{
+		std::cout << "[Intern main test]:" << std::endl;
+		{
+			AForm *		f1;
+			Intern *	i1 = new Intern;
+			std::cout << "-- intern test number 1 --" << std::endl;
+			try {
+				std::cout << "i1 create f1 RobotomyRequestForm..." << std::endl;
+				f1 = i1->makeForm("Robotomy request", "i1");
+				std::cout << *f1 << std::endl;
+				delete f1;
+				delete i1;
+				std::cout << std::endl;
+			}
+			catch (std::exception & e) {
+				delete i1;
+				std::cout << e.what() << std::endl;
+			}
+		}
+		{
+			AForm *		f2;
+			Intern *	i2 = new Intern;
+			std::cout << "-- intern test number 2 --" << std::endl;
+			try {
+				std::cout << "i2 create f2 ShrubberyCreationForm..." << std::endl;
+				f2 = i2->makeForm("Shrubbery request", "i2");
+				std::cout << *f2 << std::endl;
+				delete f2;
+				delete i2;
+				std::cout << std::endl;
+			}
+			catch (std::exception & e) {
+				delete i2;
+				std::cout << e.what() << std::endl;
+			}
+		}
+		{
+			AForm *		f3;
+			Intern *	i3 = new Intern;
+			std::cout << "-- intern test number 3 --" << std::endl;
+			try {
+				std::cout << "i3 create f3 PresidentialPardonForm..." << std::endl;
+				f3 = i3->makeForm("Presidental request", "i3");
+				std::cout << *f3 << std::endl;
+				delete f3;
+				delete i3;
+				std::cout << std::endl;
+			}
+			catch (std::exception & e) {
+				delete i3;
+				std::cout << e.what() << std::endl;
+			}
+		}
+		{
+			AForm *		f4;
+			Intern *	i4 = new Intern;
+			std::cout << "-- intern test number 4 --" << std::endl;
+			try {
+				std::cout << "i4 create f4 LolForm..." << std::endl;
+				f4 = i4->makeForm("Lol request", "i4");
+				std::cout << *f4 << std::endl;
+				delete f4;
+				delete i4;
+				std::cout << std::endl;
+			}
+			catch (std::exception & e) {
+				delete i4;
 				std::cout << e.what() << std::endl;
 			}
 		}

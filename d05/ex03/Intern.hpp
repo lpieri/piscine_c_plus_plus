@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:56:57 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/21 14:36:27 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 15:14:10 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ private:
 public:
 	Intern(void);
 	~Intern();
+
+	class				UnknowFormException : public std::exception {
+		public:
+			virtual const char *	what() const throw();
+	};
+
 
 	AForm *			makeForm(std::string request_form, std::string target) const;
 
