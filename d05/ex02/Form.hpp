@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:41:23 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 18:18:27 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 10:01:39 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,23 @@
 
 # include "Bureaucrat.hpp"
 
-# ifndef MAX_HIGH_GRADE
-# define MAX_HIGH_GRADE		1
-# endif
-
-# ifndef MAX_LOW_GRADE
-# define MAX_LOW_GRADE		150
-# endif
-
 class AForm
 {
 private:
-	Form(void);
-	Form(Form const & src);
+	AForm(void);
+	AForm(AForm const & src);
 
-	virtual void		_action(void) = 0;
+	virtual void		_action(void) const = 0;
 
 	std::string const 	_name;
+	std::string			_target;
 	uint const			_grade_to_sign;
 	uint const			_grade_to_execute;
 	bool				_is_signed;
 
 public:
-	Form(std::string name, uint gradeToSign, uint gradeToExe);
-	~Form(void);
+	AForm(std::string name, uint gradeToSign, uint gradeToExe, std::string target);
+	~AForm(void);
 
 	class				GradeTooHighException : public std::exception {
 		public:
@@ -51,6 +44,7 @@ public:
 	};
 
 	std::string			getName(void) const;
+	std::string			getTarget(void) const;
 	uint				getGradeToSign(void) const;
 	uint				getGradeToExe(void) const;
 	bool				getIsSigned(void) const;
@@ -58,9 +52,9 @@ public:
 	void				beSigned(Bureaucrat const & bureaucrat);
 	void				execute(Bureaucrat const & executor) const;
 
-	Form &				operator=(Form const & rhs);
+	AForm &				operator=(AForm const & rhs);
 };
 
-std::ostream &			operator<<(std::ostream & o, Form const & i);
+std::ostream &			operator<<(std::ostream & o, AForm const & i);
 
 #endif

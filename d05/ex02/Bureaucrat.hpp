@@ -6,13 +6,14 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:07:13 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 17:37:15 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 10:09:15 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+# include "Form.hpp"
 # include <iostream>
 # include <stdexcept>
 
@@ -53,6 +54,7 @@ public:
 	void				addGrade(void);
 	void				removeGrade(void);
 	void				signForm(bool isSigned, std::string formName, uint gradeToSigned) const;
+	void				executeForm(AForm const & form);
 
 	Bureaucrat&			operator=(Bureaucrat const & rhs);
 };

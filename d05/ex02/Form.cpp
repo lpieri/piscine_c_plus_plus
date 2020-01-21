@@ -6,72 +6,86 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:54:18 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 17:38:48 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 09:47:46 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(void) :
+AForm::AForm(void) :
 _name("default"), _grade_to_sign(MAX_LOW_GRADE),
-_grade_to_execute(MAX_LOW_GRADE), _is_signed(false) {}
+_grade_to_execute(MAX_LOW_GRADE), _is_signed(false), _target("default") {}
 
-Form::Form(Form const & src) :
+AForm::AForm(AForm const & src) :
 _name(src.getName()), _grade_to_sign(src.getGradeToSign()),
-_grade_to_execute(src.getGradeToExe()), _is_signed(getIsSigned()) {}
+_grade_to_execute(src.getGradeToExe()), _is_signed(getIsSigned()), _target(src.getTarget()) {}
 
-Form::~Form(void) {}
+AForm::~AForm(void) {}
 
-Form::Form(std::string name, uint gradeToSign, uint gradeToExe) : _name(name),
-_grade_to_sign(gradeToSign), _grade_to_execute(gradeToExe), _is_signed(false) {
+AForm::AForm(std::string name, uint gradeToSign, uint gradeToExe, std::string target) : _name(name),
+_grade_to_sign(gradeToSign), _grade_to_execute(gradeToExe), _is_signed(false), _target(target) {
 	if (this->_grade_to_execute > MAX_LOW_GRADE || this->_grade_to_sign > MAX_LOW_GRADE)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else if (this->_grade_to_execute < MAX_HIGH_GRADE || this->_grade_to_sign < MAX_HIGH_GRADE)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 }
 
-const char *	Form::GradeTooHighException::what() const throw() {
+const char *	AForm::GradeTooHighException::what() const throw() {
 	return ("The grade of Bureaucrat or set value is too high (grade < 1)");
 }
 
-const char *	Form::GradeTooLowException::what() const throw() {
+const char *	AForm::GradeTooLowException::what() const throw() {
 	return ("The grade of Bureaucrat or set value is too low (grade > 150)");
 }
 
-std::string		Form::getName(void) const {
+std::string		AForm::getName(void) const {
 	return (this->_name);
 }
 
-uint			Form::getGradeToSign(void) const {
+std::string		AForm::getTarget(void) const {
+	return (this->_target);
+}
+
+uint			AForm::getGradeToSign(void) const {
 	return (this->_grade_to_sign);
 }
 
-uint			Form::getGradeToExe(void) const {
+uint			AForm::getGradeToExe(void) const {
 	return (this->_grade_to_execute);
 }
 
-bool			Form::getIsSigned(void) const {
+bool			AForm::getIsSigned(void) const {
 	return (this->_is_signed);
 }
 
-void			Form::beSigned(Bureaucrat const & bureaucrat) {
+void			AForm::beSigned(Bureaucrat const & bureaucrat) {
 	if (bureaucrat.getGrade() > this->_grade_to_sign) {
 		bureaucrat.signForm(this->_is_signed, this->_name, this->_grade_to_sign);
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 	this->_is_signed = true;
 	bureaucrat.signForm(this->_is_signed, this->_name, this->_grade_to_sign);
 }
 
-Form &			Form::operator=(Form const & rhs) {
+void			AForm::execute(Bureaucrat const & executor) const {
+	if (this->_is_signed == false) {
+
+	}
+	if (executor.getGrade() > this->_grade_to_execute) {
+		throw AForm::GradeTooLowException();
+	}
+	this->_action();
+}
+
+AForm &			AForm::operator=(AForm const & rhs) {
 	this->_is_signed = rhs.getIsSigned();
 	return (*this);
 }
 
-std::ostream &		operator<<(std::ostream & o, Form const & i) {
-	o << "The name of this form is: " << i.getName();
+std::ostream &		operator<<(std::ostream & o, AForm const & i) {
+	o << "The name of this Aform is: " << i.getName();
 	o << ", grade required to sign it: " << i.getGradeToSign();
 	o << ", grade required for execute it: " << i.getGradeToExe();
-	o << ", this form is signed ? " << i.getIsSigned();
+	o << ", this Aform is signed ? " << i.getIsSigned();
 	return (o);
 }

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 11:18:17 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/20 17:32:55 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/21 10:06:00 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ Bureaucrat::Bureaucrat(std::string name, uint grade) : _name(name) {
 }
 
 const char *	Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("The grade is too high (grade < 1)");
+	return ("The bureaucrat grade is too high (grade < 1)");
 }
 
 const char *	Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("The grade is too low (grade > 150)");
+	return ("The bureaucrat grade is too low (grade > 150)");
 }
 
 std::string		Bureaucrat::getName(void) const {
@@ -60,6 +60,16 @@ void			Bureaucrat::signForm(bool isSigned, std::string formName, uint gradeToSig
 	} else {
 		std::cout << this->_name << " cannot sign " << formName << " he grade ";
 		std::cout << this->_grade << " is too low than form grade " << gradeToSigned << std::endl;
+	}
+}
+
+void			Bureaucrat::executeForm(AForm const & form) {
+	if (form.getGradeToExe() < this->_grade) {
+		std::cout << this->_name << " cannot execute " << form.getName();
+		std::cout << " he grade " << this->_grade;
+		std::cout << " is too low than form grade " << form.getGradeToSign() << std::endl;
+	} else {
+		std::cout << this->_name << " execute " << form.getName() << std::endl;
 	}
 }
 
