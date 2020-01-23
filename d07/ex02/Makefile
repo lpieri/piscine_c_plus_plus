@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 12:43:54 by cpieri            #+#    #+#              #
-#    Updated: 2020/01/22 16:04:36 by cpieri           ###   ########.fr        #
+#    Updated: 2020/01/23 10:30:49 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #			Ouput Name of Makefile			#
 # ***************************************** #
 
-NAME		=	whatever
+NAME		=	ex02
 
 # ***************************************** #
 #	Path for Sources, Objects and Includes	#
@@ -30,11 +30,11 @@ PATH_INCS	=	.
 #	Names of Sources, Objects and Includes	#
 # ***************************************** #
 
-NAME_SRCS	=	whatever.cpp
+NAME_SRCS	=	main.cpp
 
 NAME_OBJS	=	$(NAME_SRCS:.cpp=.o)
 
-NAME_INCS	=
+NAME_INCS	=	Array.hpp
 
 NAME_DEPS	=	$(NAME_SRCS:.cpp=.d)
 
