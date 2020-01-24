@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 15:21:14 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/24 16:54:18 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/24 17:04:45 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class MutantStack : public std::stack<T>
 {
 public:
 	MutantStack(void) : std::stack<T>() {};
-	MutantStack(std::stack<T> const & src) : std::stack<T>(src) {};
 	MutantStack(MutantStack const & src) : std::stack<T>(src) {};
 	~MutantStack(void) {};
 
