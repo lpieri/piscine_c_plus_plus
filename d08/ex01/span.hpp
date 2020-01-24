@@ -6,13 +6,14 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 11:26:05 by cpieri            #+#    #+#             */
-/*   Updated: 2020/01/24 14:37:25 by cpieri           ###   ########.fr       */
+/*   Updated: 2020/01/24 15:03:32 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <stdexcept>
 # include <iostream>
 # include <algorithm>
 # include <vector>
